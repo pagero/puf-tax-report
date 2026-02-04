@@ -1,0 +1,20 @@
+|===
+|Path |Description
+
+|`cbc:ID`
+|**Tax report number** +
+A unique identifier of the tax report.
+|===
+
+*Example* +
+_cbc:ID with example value_
+[source,xml]
+----
+<<TaxReport>
+>
+  <!-- Code omitted for clarity -->
+  <cbc:ID>51234882</cbc:ID>
+  <!-- Code omitted for clarity -->
+</<TaxReport>
+>
+----

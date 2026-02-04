@@ -1,0 +1,18 @@
+|===
+|Path |Description
+
+|`Type`
+|**Type of transmission.** +
+_Valid values are: NEW, ADDITIONAL, CORRECTIVE, RECTIFICATION._
+|===
+
+*Example* +
+_Type with example value_
+[source,xml]
+----
+<TaxReport>
+  <!-- Code omitted for clarity -->
+  <Type>RECTIFICATION</cbc:ClassificationIdentifier>
+  <!-- Code omitted for clarity -->
+</TaxReport>
+----

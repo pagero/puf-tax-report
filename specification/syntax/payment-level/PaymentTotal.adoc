@@ -1,0 +1,48 @@
+.Elements available in PaymentTotal (Information about a payment)
+|===
+|Path |Description
+
+|`cbc:TaxExclusiveAmount`
+|**Total received payment amount excluding TAX.**
+
+|`cbc:TaxInclusiveAmount`
+|**Total received payment amount including TAX.** 
+
+|`PaymentSubtotal/cbc:TaxExclusiveAmount`
+|**Received payment amount exclusive TAX per subtotal** 
+
+|`PaymentSubtotal/cbc:TaxInclusiveAmount`
+|**Received payment amount including TAX per subtotal** 
+
+|`PaymentSubtotal/cbc:Percent`
+|**Tax percent for the subtotal** 
+
+|===
+
+*Example* +
+_PaymentTotal with example values_
+[source,xml]
+----
+<TaxReport>
+  <!-- Code omitted for clarity -->
+  <Payment>
+    <!-- Code omitted for clarity -->
+    <PaymentTotal>
+        <cbc:TaxExclusiveAmount currencyID="EUR">200.00</cbc:TaxInclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="EUR">220.00</cbc:TaxInclusiveAmount>
+        <PaymentSubtotal>
+            <cbc:TaxExclusiveAmount currencyID="EUR">100.00</cbc:TaxInclusiveAmount>
+            <cbc:TaxInclusiveAmount currencyID="EUR">120.00</cbc:TaxInclusiveAmount>
+            <cbc:Percent>20</cbc:Percent>
+        </PaymentSubtotal>
+        <PaymentSubtotal>
+            <cbc:TaxExclusiveAmount currencyID="EUR">100.00</cbc:TaxInclusiveAmount>
+            <cbc:TaxInclusiveAmount currencyID="EUR">100.00</cbc:TaxInclusiveAmount>
+            <cbc:Percent>0</cbc:Percent>
+        </PaymentSubtotal>
+    </PaymentTotal>
+    <!-- Code omitted for clarity -->
+  </Payment>
+  <!-- Code omitted for clarity -->
+</Invoice>
+----

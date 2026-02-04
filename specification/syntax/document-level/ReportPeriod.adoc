@@ -1,0 +1,27 @@
+.Elements available in ReportPeriod
+|===
+|Path |Description
+
+|`cbc:StartDate`
+|**Report period start date** +
+_Format "YYYY-MM-DD"._
+
+|`cbc:EndDate`
+|**Report period end date** +
+_Format "YYYY-MM-DD"._
+
+|===
+
+*Example* +
+_ReportPeriod with example values_
+[source,xml]
+----
+<TaxReport>
+  <!-- Code omitted for clarity -->
+  <ReportPeriod>
+      <cbc:StartDate>2026-01-01</cbc:StartDate>
+      <cbc:EndDate>2026-01-10</cbc:EndDate>
+  </cac:ReportPeriod>
+  <!-- Code omitted for clarity -->
+</Invoice>
+----

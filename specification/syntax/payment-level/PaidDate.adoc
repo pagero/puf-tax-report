@@ -1,0 +1,23 @@
+|===
+|Path |Description
+
+|`cbc:PaidDate`
+|**Paid date** +
+The date when the payment was received. +
+_Format "YYYY-MM-DD"._
+|===
+
+*Example* +
+_cbc:PaidDate with example value_ 
+[source,xml]
+----
+<TaxReport>
+  <!-- Code omitted for clarity -->
+  <Payment>
+    <!-- Code omitted for clarity -->
+    <cbc:PaidDate>2026-01-01</cbc:PaidDate>
+    <!-- Code omitted for clarity -->
+  <Payment>
+  <!-- Code omitted for clarity -->
+</TaxReport>
+----
