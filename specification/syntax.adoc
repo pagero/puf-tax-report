@@ -1,39 +1,16 @@
-The chapter describes the `ubl:XYZ` syntax binding and all document content.
+The chapter is divided into two parts for easier navigation:
 
-[comment]
---
------------------------------------------------------------------------
-NOTE: Document level syntax/content block starts below.
+1. <<_tax_report>> (specifies segments available on tax report level)
+2. <<_payment>> (specifies segments available on payment level)
 
-More "levels" can be added if needed, see e.g. ubl:ApplicationResponse.
------------------------------------------------------------------------
---
+:sectnums:
 
-=== ubl:XYZ (document level)
+=== Tax report
 
-Information in this section describe the elements available on document level.
+include::syntax/document-level.adoc[]
 
-==== ext:UBLExtensions
+:sectnums:
 
-include::syntax/ubl-root-xyz/ubl-extensions.adoc[]
+=== Payment
 
-==== cbc:ID
-
-include::syntax/ubl-root-xyz/id.adoc[]
-
-[comment]
---
------------------------------------------------------------------------
-NOTE: Line level syntax/content block starts below.
-
-More "levels" can be added if needed, see e.g. ubl:ApplicationResponse.
------------------------------------------------------------------------
---
-
-=== cac:XYZ (line level)
-
-Information in this section describe the elements available on line level.
-
-==== ext:UBLExtensions
-
-include::syntax/another-ubl-level-xyz/ubl-extensions.adoc[]
+include::syntax/payment-level.adoc[]

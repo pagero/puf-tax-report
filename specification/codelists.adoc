@@ -15,50 +15,13 @@ Lastly, in some cases, *all* the values are defined solely for PUF.
 |===
 |Business Term |Path |listID
 
-|Codelist XYZ
-|`XPath`
-|<<_puf_xyz_1>>
+|Currency code
+|`cbc:DocumentCurrencyCode` +
+ `/*/@currencyID`
+|https://pagero.github.io/puf-code-lists/#_puf_004_currencycode[PUF-004-CURRENCYCODE^]
 
-|Codelist XYZ
-|`XPath`
-|<<_puf_xyz_2>>
-
-|...
-|...
-|...
-
-|===
-
-==== PUF-XYZ-1
-
-The code list value consist of `country code` + `:` + `type of value`. 
-
-Country code states which country the value is applicable for.
-
-|===
-|Value |Description
-
-|`XYZ:XYZ`
-|XYZ
-
-|...
-|...
-
-|===
-
-==== PUF-XYZ-2
-
-The code list value consist of `country code` + `:` + `type of value`. 
-
-Country code states which country the value is applicable for.
-
-|===
-|Value |Description
-
-|`XYZ:XYZ`
-|XYZ
-
-|...
-|...
+|Identification scheme
+|`cac:PartyLegalEntity/cbc:CompanyID/@schemeID` +
+|https://pagero.github.io/puf-code-lists/#_puf_008_identificationscheme[PUF-008-IDENTIFICATIONSCHEME^]
 
 |===

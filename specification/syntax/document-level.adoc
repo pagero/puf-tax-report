@@ -1,0 +1,45 @@
+:sectnums!:
+
+Information in this section describe the elements available on document level.
+
+// Commenting out until available/needed
+//==== ext:UBLExtensions
+
+//include::document-level/ubl-extensions.adoc[]
+
+==== cbc:CustomizationID
+
+include::document-level/CustomizationID.adoc[]
+
+==== cbc:ProfileID
+
+include::document-level/ProfileID.adoc[]
+
+==== cbc:ID
+
+include::document-level/id.adoc[]
+
+==== cbc:IssueDate
+
+include::document-level/IssueDate.adoc[]
+
+==== cbc:IssueTime
+
+include::document-level/IssueTime.adoc[]
+
+==== ClassificationIdentifier
+
+include::document-level/ClassificationIdentifier.adoc[]
+
+==== Type
+
+include::document-level/Type.adoc[]
+
+==== ReportPeriod
+
+include::document-level/ReportPeriod.adoc[]
+
+==== 	cac:IssuerParty
+
+include::document-level/IssuerParty.adoc[]
+

@@ -1,0 +1,22 @@
+|===
+|Path |Description
+
+|`cbc:PaymentMeansCode`
+|**Payment means code** +
+The means, expressed as code, for how a payment has been settled + 
+|===
+
+*Example* +
+_cbc:PaidDate with example value_ 
+[source,xml]
+----
+<TaxReport>
+  <!-- Code omitted for clarity -->
+  <Payment>
+    <!-- Code omitted for clarity -->
+    <cbc:PaymentMeansCode>1</cbc:PaidDate>
+    <!-- Code omitted for clarity -->
+  </Payment>
+  <!-- Code omitted for clarity -->
+<TaxReport>
+----

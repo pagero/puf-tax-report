@@ -1,0 +1,18 @@
+|===
+|Path |Description
+
+|`ClassificationIdentifier`
+|**Classification Identifier. Indicates if report is considered an Income or expense report** +
+_Valid values are INCOME or EXPENSE._
+|===
+
+*Example* +
+_ClassificationIdentifier with example value_
+[source,xml]
+----
+<TaxReport>
+  <!-- Code omitted for clarity -->
+  <ClassificationIdentifier>INCOME</cbc:ClassificationIdentifier>
+  <!-- Code omitted for clarity --> 
+</TaxReport>
+----

@@ -1,0 +1,52 @@
+Below table show available fields in `cac:IssuerParty`
+
+.Additional elements added within cac:IssuerParty
+|===
+|Path |Description
+
+|`cac:PartyName/cbc:Name`
+|**Issuer name** +
+Issuer name.
+
+|`cac:PartyLegalEntity/cbc:RegistrationName`
+|**Registration name** +
+Issuer's formal name or company name.
+
+|`cac:PartyLegalEntity/cbc:CompanyID`
+|**Legal company identifier** +
+Issuer legal registration identifier.
+
+|`cac:PartyLegalEntity/cbc:CompanyID/@schemeID`
+|**Legal company scheme identifier** +
+Issuers legal registration identifier scheme identifier +
+Value must be according to code list https://pagero.github.io/puf-code-lists/#_puf_008_identificationscheme[PUF-008-IDENTIFICATIONSCHEME^].
+
+|`cac:PartyLegalEntity/cac:Country/cbc:IdentificationCode`
+|**Country code** +
+Issuers legal entity country code.
+
+|===
+
+*Example* +
+_cac:IssuerParty example_
+[source,xml]
+----
+<TaxReport>
+  <!-- Code omitted for clarity -->
+  <cac:IssuerParty>
+    <cac:PartyName>
+        <cbc:Name>Issuer Name</cbc:Name>
+    </cac:PartyName>
+    <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Issuer Registration Name</cbc:RegistrationName>
+        <cbc:CompanyID schemeID="0002">123456789</cbc:CompanyID>
+        <cac:RegistrationAddress>
+            <cac:Country>
+                <cbc:IdentificationCode>FR</cbc:IdentificationCode>
+            </cac:Country>
+        </cac:RegistrationAddress>
+    </cac:PartyLegalEntity> 
+  </cac:IssuerParty>
+  <!-- Code omitted for clarity -->
+</TaxReport>
+----

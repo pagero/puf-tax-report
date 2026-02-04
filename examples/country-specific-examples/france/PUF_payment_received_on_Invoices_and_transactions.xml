@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TaxReport xmlns="urn:pagero:PageroUniversalFormat:TaxReport:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+
+    <!-- EXAMPLE OF A PAYMENT RECEIVED IN FRANCE. DOCUMENTING RECEIVED PAYMENT FOR INVOICES AND POS TRANSACTIONS -->
+
+    <!-- Specification Identifier -->
+    <cbc:CustomizationID>urn:pagero.com:puf:taxreport:1.0</cbc:CustomizationID>
+    <!-- Business process type identifier -->
+    <cbc:ProfileID>urn:pagero.com:puf:taxreport:1.0</cbc:ProfileID>
+    <!-- Tax report Identifier -->
+    <cbc:ID>123456</cbc:ID>
+    <!-- Tax report Issue date -->
+    <cbc:IssueDate>2026-01-01</cbc:IssueDate>
+    <!-- Classification Identifier -->
+    <ClassificationIdentifier>INCOME</ClassificationIdentifier>
+    <!-- Issuer party of the report -->
+    <cac:IssuerParty>
+        <cac:PartyLegalEntity>
+            <!-- Reporting party (Seller) legal registration identifier (SIREN) -->
+            <cbc:CompanyID schemeID="0002">123456789</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+    </cac:IssuerParty>
+    <!-- reporting payment received of Invoice 1 -->
+    <Payment>
+        <!-- Document currency (The currency in which payment amounts are given) -->
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>    
+            <!-- Indicates if the payment relates to an invoice or a receipttransaction. Valid values are INVOICE or RECEIPTTRANSACTION -->
+            <PaymentDataType>INVOICE</PaymentDataType>
+            <!-- Invoice identifier of the referenced document -->
+            <cbc:ID>123456789</cbc:ID>
+            <!-- issue date of referenced/paid invoice -->
+            <cbc:IssueDate>2026-01-01</cbc:IssueDate>
+        </ReferencedDocument>
+        <!--Date when payment was received-->
+        <cbc:PaidDate>2026-01-01</cbc:PaidDate>
+        <!-- Contains information regaring the payment, totals and subtotals -->
+        <PaymentTotal>
+            <!-- Information regarding the payment subtotals -->
+            <PaymentSubtotal>
+                <!-- Amount received per tax percent (including taxes)-->
+                <cbc:TaxInclusiveAmount currencyID="EUR">150.00</cbc:TaxInclusiveAmount>
+                <!-- Tax percent -->
+                <cbc:Percent>20</cbc:Percent>
+            </PaymentSubtotal>
+            <!-- Information regarding the payment broken down on tax rate -->
+            <PaymentSubtotal>
+                <!-- Amount received per tax percent (including taxes)-->
+                <cbc:TaxInclusiveAmount currencyID="EUR">666.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>0</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+    <!-- reporting payment received of Invoice 2 -->
+    <Payment>
+        <!-- Document currency (The currency in which payment amounts are given) -->
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>
+            <!-- Indicates if the payment relates to an invoice or a receipttransaction. Valid values are INVOICE or RECEIPTTRANSACTION -->
+            <PaymentDataType>INVOICE</PaymentDataType>
+            <!-- Invoice identifier of the referenced document -->
+            <cbc:ID>987654321</cbc:ID>
+            <!-- issue date of referenced/paid invoice -->
+            <cbc:IssueDate>2026-01-01</cbc:IssueDate>
+        </ReferencedDocument>
+        <!--Date when payment was received-->
+        <cbc:PaidDate>2026-01-01</cbc:PaidDate>
+        <!-- Contains information regaring the payment, totals and subtotals -->
+        <PaymentTotal>
+            <!-- Information regarding the payment subtotals -->
+            <PaymentSubtotal>
+                <!-- Amount received per tax percent (including taxes)-->
+                <cbc:TaxInclusiveAmount currencyID="EUR">150.00</cbc:TaxInclusiveAmount>
+                <!-- Tax percent -->
+                <cbc:Percent>20</cbc:Percent>
+            </PaymentSubtotal>
+            <PaymentSubtotal>
+                <!-- Amount received per tax percent (including taxes)-->
+                <cbc:TaxInclusiveAmount currencyID="EUR">666.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>0</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+    <!-- reporting payment of receipttransactions (POS) on a specific paid date-->
+    <Payment>
+        <!-- Document currency (The currency in which payment amounts are given) -->
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>
+            <!-- Indicates if the payment relates to an invoice or a receipttransaction. Valid values are INVOICE or RECEIPTTRANSACTION -->
+            <PaymentDataType>RECEIPTTRANSACTION</PaymentDataType>
+        </ReferencedDocument>
+        <!--Date when payment was received-->
+        <cbc:PaidDate>2026-01-01</cbc:PaidDate>
+        <!-- The paid amount subtotals per tax category -->
+        <!-- Contains information regaring the payment, totals and subtotals -->
+        <PaymentTotal>
+            <!-- Information regarding the payment subtotals -->
+            <PaymentSubtotal>
+                <!-- Amount received per tax percent (including taxes)-->
+                <cbc:TaxInclusiveAmount currencyID="EUR">150.00</cbc:TaxInclusiveAmount>
+                <!-- Tax percent -->
+                <cbc:Percent>20</cbc:Percent>
+            </PaymentSubtotal>
+            <PaymentSubtotal>
+                <!-- Amount received per tax percent (including taxes)-->
+                <cbc:TaxInclusiveAmount currencyID="EUR">666.00</cbc:TaxInclusiveAmount>
+                <!-- Tax percent -->
+                <cbc:Percent>0</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+</TaxReport>

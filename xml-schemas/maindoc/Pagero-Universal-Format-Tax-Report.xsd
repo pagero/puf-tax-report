@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="urn:pagero:PageroUniversalFormat:TaxReport:1.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+    xmlns:udt="urn:oasis:names:specification:bdndr:schema:xsd:UnqualifiedDataTypes-1"
+    targetNamespace="urn:pagero:PageroUniversalFormat:TaxReport:1.0" elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+
+    <!-- 
+    Pagero Universal Format - Tax Report
+    
+    History: 
+    v1.0 2026-02-03 - Andreas Carlsson - BETA version
+    
+    -->
+
+    <!-- All imports refer to OASIS UBL 2.3 imports -->
+    <xs:import namespace="urn:oasis:names:specification:bdndr:schema:xsd:UnqualifiedDataTypes-1"
+        schemaLocation="../common/BDNDR-UnqualifiedDataTypes-1.1.xsd"/>
+    <xs:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+        schemaLocation="../common/UBL-CommonBasicComponents-2.3.xsd"/>
+    <xs:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+        schemaLocation="../common/UBL-CommonAggregateComponents-2.3.xsd"/>
+    <xs:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+        schemaLocation="../common/urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
+
+    <xs:annotation>
+        <xs:documentation>Pagero Universal Format Tax Report XML Schema</xs:documentation>
+    </xs:annotation>
+
+    <!-- TYPES -->
+    <xs:complexType name="ClassificationIdentifierType">
+        <xs:simpleContent>
+            <xs:extension base="udt:CodeType"/>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="TransmissionType">
+        <xs:simpleContent>
+            <xs:extension base="udt:CodeType"/>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="PaymentDataTypeType">
+        <xs:simpleContent>
+            <xs:extension base="udt:CodeType"/>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ReferencedDocumentType">
+        <xs:annotation>
+            <xs:documentation>Reference to a document</xs:documentation>
+        </xs:annotation>
+
+        <xs:sequence>
+            <xs:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A container for extensions</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PaymentDataType" type="PaymentDataTypeType" minOccurs="0"
+                maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Indicates if the payment relates to an invoice or a receipttransaction. Valid values are INVOICE or RECEIPTTRANSACTION</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cbc:ID" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ID of the referenced document</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cbc:IssueDate" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>IssueDate of the referenced document</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cbc:DocumentTypeCode" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Document typecode of the referenced document</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cbc:UUID" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A universally unique identifier for the referenced document</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cac:AccountingSupplierParty" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Accounting Supplier Party of the referenced document</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cac:AccountingCustomerParty" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Accounting Customer Party of the referenced document</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MonetaryTotalType">
+        <xs:sequence>
+            <xs:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A container for extensions</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cbc:TaxExclusiveAmount" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Total received payment amount excluding TAX</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cbc:TaxInclusiveAmount" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Total paid amount including TAX</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PaymentSubtotal" type="MonetarySubtotalType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>The paid amount subtotals per tax category</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MonetarySubtotalType">
+
+        <xs:sequence>
+            <xs:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A container for extensions</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cbc:TaxExclusiveAmount" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Total paid amount excluding TAX</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cbc:TaxInclusiveAmount" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Total paid amount including TAX</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="cbc:Percent" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Tax percent for the subtotal</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PaymentType">
+        <xs:annotation>
+            <xs:documentation>The reported payments. E.g payment of an invoice or payment of a transaction</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A container for extensions</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <xs:element ref="cbc:DocumentCurrencyCode">
+                <xs:annotation>
+                    <xs:documentation>The currency in which payment amounts are given.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="ReferencedDocument" type="ReferencedDocumentType" minOccurs="0"
+                maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Information of a referenced document (E.g invoice)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element ref="cbc:PaidDate" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The date when the payment was received</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element ref="cbc:PaymentMeansCode" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The means, expressed as code, for how a payment has been settled.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="PaymentTotal" type="MonetaryTotalType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Information regarding the payment</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+    <!-- SEQUENCE OF ELEMENTS FROM ROOT -->
+    <xs:complexType name="TaxReportType">
+        <xs:annotation>
+            <xs:documentation>The data type for the root element</xs:documentation>
+        </xs:annotation>
+
+        <xs:sequence>
+            <xs:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A container for extensions</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element ref="cbc:CustomizationID" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Tax Report Specification identifier</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element ref="cbc:ProfileID" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Tax Report Business process type</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element ref="cbc:ID" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Tax Report number</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element ref="cbc:IssueDate" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Tax Report issue date. Must not include a timezone.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element ref="cbc:IssueTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Tax Report issue time. Must include the timezone.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="ClassificationIdentifier" type="ClassificationIdentifierType"
+                minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Classificationidentifier if report is income or expense. Ex of values INCOME or EXPENSE</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="Type" type="TransmissionType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Type of transmission. Valid values are: NEW, ADDITIONAL, CORRECTIVE, RECTIFICATION</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="ReportPeriod" type="cac:PeriodType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Report period. If report period is used both start date and end date are mandatory</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element ref="cac:IssuerParty" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Issuer of the Tax report</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="Payment" type="PaymentType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Reporting of Payments</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="TaxReport" type="TaxReportType"/>
+
+
+</xs:schema>

@@ -1,4 +1,4 @@
-:doctitle: image:images/puf-logo.png[float="center", width=100%] PUF XYZ specification template 1.0
+:doctitle: image:images/puf-logo.png[float="center", width=100%] PUF Tax Report 1.0 (BETA)
 :author: Copyright &copy; 2022, Pagero Group
 :email: https://pagero.com
 :copyright: Pagero Group
@@ -14,7 +14,7 @@
 :sectlinks:
 :nofooter:
 
-A specification based on https://docs.oasis-open.org/ubl/UBL-2.3.html[Universal Business Language (UBL)] that enables the exchange of compliant business documents worldwide via our e-business platform link:https://www.pageroonline.com[Pagero Online].
+A specification developed by Pagero. The XML-schema is developed by Pagero but incorporates components from https://docs.oasis-open.org/ubl/UBL-2.3.html[Universal Business Language (UBL)]. The format enables the exchange of compliant documents worldwide via our e-business platform link:https://www.pageroonline.com[Pagero Online].
 
 :sectnums:
 
@@ -34,9 +34,10 @@ include::specification/syntax.adoc[]
 
 :sectnums:
 
-== Extensions
+// Commenting out until available/needed
+//== Extensions
 
-include::specification/extensions.adoc[]
+//include::specification/extensions.adoc[]
 
 == Country specifics
 

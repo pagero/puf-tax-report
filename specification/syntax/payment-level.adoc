@@ -1,0 +1,30 @@
+:sectnums!:
+
+Information in this section describe the elements available on payment level.
+
+[#line-extension]
+
+// Commenting out until available/needed
+//==== ext:UBLExtensions
+
+//include::payment-level/ubl-extensions.adoc[]
+
+==== cbc:DocumentCurrencyCode
+
+include::payment-level/DocumentCurrencyCode.adoc[]
+
+==== ReferencedDocument
+
+include::payment-level/ReferencedDocument.adoc[]
+
+==== cbc:PaidDate
+
+include::payment-level/PaidDate.adoc[]
+
+==== cbc:PaymentMeansCode
+
+include::payment-level/PaymentMeansCode.adoc[]
+
+==== PaymentTotal
+
+include::payment-level/PaymentTotal.adoc[]

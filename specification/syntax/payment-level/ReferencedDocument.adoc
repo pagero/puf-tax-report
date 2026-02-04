@@ -1,0 +1,88 @@
+.Elements available in ReferencedDocument (Information of a referenced document (E.g invoice))
+|===
+|Path |Description
+
+|`PaymentDataType`
+|**Indicates if the payment relates to an invoice or a receipttransaction.** +
+_Valid values are INVOICE or RECEIPTTRANSACTION"._
+
+|`cbc:ID`
+|**ID of the referenced document** +
+_E.g. invoice number._
+
+|`cbc:IssueDate`
+|**Issue date of the referenced document** +
+_E.g. invoice date. Format "YYYY-MM-DD"._
+
+|`cbc:DocumentTypeCode`
+|**Document typecode of the referenced document**
+
+|`cbc:UUID`
+|**A universally unique identifier for the referenced document** 
+
+|`cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name`
+|**Party name** +
+
+|`cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName`
+|**Registration name** +
+Formal name for the seller of the referenced document 
+
+|`cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID`
+|**Legal company identifier** +
+Legal registration identifier of the seller of the referenced document.
+
+|`cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID`
+|**Legal company scheme identifier** +
+Scheme ID for the legal registration identifier of the seller of the referenced document+
+Value must be according to code list https://pagero.github.io/puf-code-lists/#_puf_008_identificationscheme[PUF-008-IDENTIFICATIONSCHEME^].
+
+|`cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name`
+|**Party name** +
+
+|`cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName`
+|**Registration name** +
+Formal name for the buyer of the referenced document 
+
+|`cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID`
+|**Legal company identifier** +
+Legal registration identifier of the buyer of the referenced document.
+
+|`cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID`
+|**Legal company scheme identifier** +
+Scheme ID for the legal registration identifier of thebuyer of the referenced document+
+Value must be according to code list https://pagero.github.io/puf-code-lists/#_puf_008_identificationscheme[PUF-008-IDENTIFICATIONSCHEME^].
+
+|===
+
+*Example* +
+_ReferencedDocument with example values_
+[source,xml]
+----
+<TaxReport>
+  <!-- Code omitted for clarity -->
+  <Payment>
+   <!-- Code omitted for clarity -->
+   <ReferencedDocument>      
+      <PaymentDataType>INVOICE</PaymentDataType>
+      <cbc:ID>123456789</cbc:ID>
+      <cbc:IssueDate>2026-01-01</cbc:IssueDate>
+      <cac:AccountingSupplierParty>
+          <cac:Party>
+              <cac:PartyLegalEntity>
+                  <cbc:CompanyID schemeID="9934">123456789</cbc:CompanyID>
+              </cac:PartyLegalEntity>
+          </cac:Party>
+      </cac:AccountingSupplierParty>
+      <!-- Accounting customer Party of the referenced document (buyer party) -->
+      <cac:AccountingCustomerParty>
+          <cac:Party>
+              <cac:PartyLegalEntity>
+                  <cbc:CompanyID schemeID="9934">123456789</cbc:CompanyID>
+              </cac:PartyLegalEntity>
+          </cac:Party>
+      </cac:AccountingCustomerParty>
+    </ReferencedDocument>
+    <!-- Code omitted for clarity -->
+  </Payment>
+</TaxReport>
+----
