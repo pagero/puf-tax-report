@@ -10,11 +10,10 @@ A unique identifier of the tax report.
 _cbc:ID with example value_
 [source,xml]
 ----
-<<TaxReport>
->
+<TaxReport>
+
   <!-- Code omitted for clarity -->
   <cbc:ID>51234882</cbc:ID>
   <!-- Code omitted for clarity -->
-</<TaxReport>
->
+</TaxReport>
 ----

@@ -17,7 +17,7 @@ _cbc:PaidDate with example value_
     <!-- Code omitted for clarity -->
     <cbc:PaidDate>2026-01-01</cbc:PaidDate>
     <!-- Code omitted for clarity -->
-  <Payment>
+  </Payment>
   <!-- Code omitted for clarity -->
 </TaxReport>
 ----

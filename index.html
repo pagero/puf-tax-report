@@ -656,7 +656,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <p>In some cases, however, required reporting data is not provided to a business recipient and is instead submitted only to the tax authority.</p>
 </div>
 <div class="paragraph">
-<p>To simplify reporting and standardize the required content, the PUF Tax Report specification has been developed.</p>
+<p>To simplify reporting and standardize the required content, the PUF Tax Report specification has been developed. Currently this specification support reporting of Payments received.</p>
 </div>
 <div class="sect2">
 <h3 id="_how_to_get_started_with_puf"><a class="anchor" href="#_how_to_get_started_with_puf"></a><a class="link" href="#_how_to_get_started_with_puf">2.1. How to get started with PUF</a></h3>
@@ -908,13 +908,12 @@ A unique identifier of the tax report.</p></td>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span><span class="tag">&lt;TaxReport&gt;</span>
-<span class="error">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;TaxReport&gt;</span>
+
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
   <span class="tag">&lt;cbc:ID&gt;</span>51234882<span class="tag">&lt;/cbc:ID&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
-<span class="tag">&lt;/</span><span class="tag">&lt;TaxReport&gt;</span>
-<span class="error">&gt;</span></code></pre>
+<span class="tag">&lt;/TaxReport&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -1096,9 +1095,9 @@ A unique identifier of the tax report.</p></td>
   <span class="tag">&lt;ReportPeriod&gt;</span>
       <span class="tag">&lt;cbc:StartDate&gt;</span>2026-01-01<span class="tag">&lt;/cbc:StartDate&gt;</span>
       <span class="tag">&lt;cbc:EndDate&gt;</span>2026-01-10<span class="tag">&lt;/cbc:EndDate&gt;</span>
-  <span class="tag">&lt;/cac:ReportPeriod&gt;</span>
+  <span class="tag">&lt;/ReportPeriod&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
-<span class="tag">&lt;/Invoice&gt;</span></code></pre>
+<span class="tag">&lt;/TaxReport&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -1372,7 +1371,7 @@ The date when the payment was received.<br>
     <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
     <span class="tag">&lt;cbc:PaidDate&gt;</span>2026-01-01<span class="tag">&lt;/cbc:PaidDate&gt;</span>
     <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
-  <span class="tag">&lt;Payment&gt;</span>
+  <span class="tag">&lt;/Payment&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
 <span class="tag">&lt;/TaxReport&gt;</span></code></pre>
 </div>
@@ -1409,7 +1408,7 @@ The means, expressed as code, for how a payment has been settled<br></p></td>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
   <span class="tag">&lt;Payment&gt;</span>
     <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
-    <span class="tag">&lt;cbc:PaymentMeansCode&gt;</span>1<span class="tag">&lt;/cbc:PaidDate&gt;</span>
+    <span class="tag">&lt;cbc:PaymentMeansCode&gt;</span>1<span class="tag">&lt;/cbc:PaymentMeansCode&gt;</span>
     <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
   <span class="tag">&lt;/Payment&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
