@@ -2,7 +2,7 @@ When it comes to tax reporting, the most suitable data source is often the busin
 
 In some cases, however, required reporting data is not provided to a business recipient and is instead submitted only to the tax authority. 
 
-To simplify reporting and standardize the required content, the PUF Tax Report specification has been developed.
+To simplify reporting and standardize the required content, the PUF Tax Report specification has been developed. Currently this specification support reporting of Payments received.
 
 === How to get started with PUF
 

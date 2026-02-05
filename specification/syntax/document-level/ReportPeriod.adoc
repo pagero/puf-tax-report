@@ -21,7 +21,7 @@ _ReportPeriod with example values_
   <ReportPeriod>
       <cbc:StartDate>2026-01-01</cbc:StartDate>
       <cbc:EndDate>2026-01-10</cbc:EndDate>
-  </cac:ReportPeriod>
+  </ReportPeriod>
   <!-- Code omitted for clarity -->
-</Invoice>
+</TaxReport>
 ----

@@ -14,7 +14,7 @@ _cbc:PaidDate with example value_
   <!-- Code omitted for clarity -->
   <Payment>
     <!-- Code omitted for clarity -->
-    <cbc:PaymentMeansCode>1</cbc:PaidDate>
+    <cbc:PaymentMeansCode>1</cbc:PaymentMeansCode>
     <!-- Code omitted for clarity -->
   </Payment>
   <!-- Code omitted for clarity -->
