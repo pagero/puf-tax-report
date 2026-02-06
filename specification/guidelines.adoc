@@ -96,7 +96,7 @@ A minor release will always be backward compatible and will take place without p
 
 Minor releases may include bugfixes, new elements, schematron updates and other features. 
 
-These releases can be followed on https://github.com/pagero/puf[GitHub].
+These releases can be followed on https://github.com/pagero/puf-tax-report[GitHub].
 
 ==== Major release
 
@@ -106,4 +106,4 @@ Such a release will be notified at least three months prior to date of implement
 
 To register for PUF major release notification you can create a free account on https://pagero.validex.net[Pagero Validex]. 
 
-But we urge all interested parties to follow the project on https://github.com/pagero/puf[GitHub] where all releases will be notified.
+But we urge all interested parties to follow the project on https://github.com/pagero/puf-tax-report[GitHub] where all releases will be notified.
