@@ -3,7 +3,7 @@
     xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
 
-    <!-- EXAMPLE OF A PAYMENT RECEIVED IN FRANCE. DOCUMENTING RECEIVED PAYMENT FOR INVOICES AND POS TRANSACTIONS -->
+    <!-- EXAMPLE OF A PAYMENT RECEIVED IN FRANCE. DOCUMENTING RECEIVED PAYMENT FOR INVOICES AND POS/B2C TRANSACTIONS -->
 
     <!-- Specification Identifier -->
     <cbc:CustomizationID>urn:pagero.com:puf:taxreport:1.0</cbc:CustomizationID>
@@ -18,16 +18,19 @@
     <!-- Issuer party of the report -->
     <cac:IssuerParty>
         <cac:PartyLegalEntity>
+            <!-- Issuer registration name -->
+            <cbc:RegistrationName>Seller Name</cbc:RegistrationName>
             <!-- Reporting party (Seller) legal registration identifier (SIREN) -->
             <cbc:CompanyID schemeID="0002">123456789</cbc:CompanyID>
         </cac:PartyLegalEntity>
     </cac:IssuerParty>
-    <!-- reporting payment received of Invoice 1 -->
+    <!-- reporting payment received of a sent B2Bi Invoice 1 -->
     <Payment>
         <!-- Document currency (The currency in which payment amounts are given) -->
         <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
         <ReferencedDocument>    
-            <!-- Indicates if the payment relates to an invoice or a receipttransaction. Valid values are INVOICE or RECEIPTTRANSACTION -->
+            <!-- Indicates if the payment relates to an invoice or a receipttransaction. Valid values are INVOICE or RECEIPTTRANSACTION. Use INVOICE if reporting payment of a B2Bi invoice. 
+                Use RECEIPTTRANSACTION if reporting payment of a B2C invoice or reporting payment on a POS transaction  -->
             <PaymentDataType>INVOICE</PaymentDataType>
             <!-- Invoice identifier of the referenced document -->
             <cbc:ID>123456789</cbc:ID>
@@ -53,12 +56,13 @@
             </PaymentSubtotal>
         </PaymentTotal>
     </Payment>
-    <!-- reporting payment received of Invoice 2 -->
+    <!-- reporting payment received of a sent B2Bi Invoice 2 -->
     <Payment>
         <!-- Document currency (The currency in which payment amounts are given) -->
         <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
         <ReferencedDocument>
-            <!-- Indicates if the payment relates to an invoice or a receipttransaction. Valid values are INVOICE or RECEIPTTRANSACTION -->
+            <!-- Indicates if the payment relates to an invoice or a receipttransaction. Valid values are INVOICE or RECEIPTTRANSACTION. Use INVOICE if reporting payment of a B2Bi invoice. 
+                Use RECEIPTTRANSACTION if reporting payment of a B2C invoice or reporting payment on a POS transaction  -->
             <PaymentDataType>INVOICE</PaymentDataType>
             <!-- Invoice identifier of the referenced document -->
             <cbc:ID>987654321</cbc:ID>
@@ -83,12 +87,13 @@
             </PaymentSubtotal>
         </PaymentTotal>
     </Payment>
-    <!-- reporting payment of receipttransactions (POS) on a specific paid date-->
+    <!-- reporting payment of receipttransactions (POS) or reporting payment received on a B2C invoice. Each payment refers to payment on a specific paid date.-->
     <Payment>
         <!-- Document currency (The currency in which payment amounts are given) -->
         <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
         <ReferencedDocument>
-            <!-- Indicates if the payment relates to an invoice or a receipttransaction. Valid values are INVOICE or RECEIPTTRANSACTION -->
+            <!-- Indicates if the payment relates to an invoice or a receipttransaction. Valid values are INVOICE or RECEIPTTRANSACTION. Use INVOICE if reporting payment of a B2Bi invoice. 
+                Use RECEIPTTRANSACTION if reporting payment of a B2C invoice or reporting payment on a POS transaction  -->
             <PaymentDataType>RECEIPTTRANSACTION</PaymentDataType>
         </ReferencedDocument>
         <!--Date when payment was received-->
