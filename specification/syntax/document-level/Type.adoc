@@ -3,7 +3,11 @@
 
 |`Type`
 |**Type of transmission.** +
-_Valid values are: NEW, ADDITIONAL, CORRECTIVE, RECTIFICATION._
+_Valid values are:_ +
+`NEW` - Initial submission for the reporting period. +
+`ADDITIONAL` - Supplementary data added to a previously submitted report. +
+`CORRECTIVE` - Correction of individual entries in a previously submitted report. +
+`RECTIFICATION` - Full replacement of a previously submitted report for the same period.
 |===
 
 *Example* +
@@ -12,7 +16,7 @@ _Type with example value_
 ----
 <TaxReport>
   <!-- Code omitted for clarity -->
-  <Type>RECTIFICATION</cbc:ClassificationIdentifier>
+  <Type>RECTIFICATION</Type>
   <!-- Code omitted for clarity -->
 </TaxReport>
 ----

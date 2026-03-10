@@ -3,7 +3,7 @@
 
 |`cbc:DocumentCurrencyCode`
 |**Document currency code** +
-The currency in which payment amounts are given.. +
+The currency in which payment amounts are given. +
 _Value must be according to ISO 4217 Currency codes._ +
 For valid values see code list https://pagero.github.io/puf-code-lists/#_puf_004_currencycode[PUF-004-CURRENCYCODE^].
 

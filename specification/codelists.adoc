@@ -24,4 +24,8 @@ Lastly, in some cases, *all* the values are defined solely for PUF.
 |`cac:PartyLegalEntity/cbc:CompanyID/@schemeID` +
 |https://pagero.github.io/puf-code-lists/#_puf_008_identificationscheme[PUF-008-IDENTIFICATIONSCHEME^]
 
+|Payment means code
+|`cbc:PaymentMeansCode`
+|https://pagero.github.io/puf-code-lists/#_puf_010_paymentmeanscode[PUF-010-PAYMENTMEANSCODE^]
+
 |===

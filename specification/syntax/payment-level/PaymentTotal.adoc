@@ -28,15 +28,15 @@ _PaymentTotal with example values_
   <Payment>
     <!-- Code omitted for clarity -->
     <PaymentTotal>
-        <cbc:TaxExclusiveAmount currencyID="EUR">200.00</cbc:TaxInclusiveAmount>
+        <cbc:TaxExclusiveAmount currencyID="EUR">200.00</cbc:TaxExclusiveAmount>
         <cbc:TaxInclusiveAmount currencyID="EUR">220.00</cbc:TaxInclusiveAmount>
         <PaymentSubtotal>
-            <cbc:TaxExclusiveAmount currencyID="EUR">100.00</cbc:TaxInclusiveAmount>
+            <cbc:TaxExclusiveAmount currencyID="EUR">100.00</cbc:TaxExclusiveAmount>
             <cbc:TaxInclusiveAmount currencyID="EUR">120.00</cbc:TaxInclusiveAmount>
             <cbc:Percent>20</cbc:Percent>
         </PaymentSubtotal>
         <PaymentSubtotal>
-            <cbc:TaxExclusiveAmount currencyID="EUR">100.00</cbc:TaxInclusiveAmount>
+            <cbc:TaxExclusiveAmount currencyID="EUR">100.00</cbc:TaxExclusiveAmount>
             <cbc:TaxInclusiveAmount currencyID="EUR">100.00</cbc:TaxInclusiveAmount>
             <cbc:Percent>0</cbc:Percent>
         </PaymentSubtotal>
@@ -44,5 +44,5 @@ _PaymentTotal with example values_
     <!-- Code omitted for clarity -->
   </Payment>
   <!-- Code omitted for clarity -->
-</Invoice>
+</TaxReport>
 ----
