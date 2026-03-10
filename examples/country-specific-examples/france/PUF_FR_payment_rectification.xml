@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TaxReport xmlns="urn:pagero:PageroUniversalFormat:TaxReport:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+
+    <!--
+        EXAMPLE: Rectification of a previously reported payment (France, Flux 10 sub-stream 10.2)
+
+        Use case: A previously reported payment (PAY-2026-001) contained an error.
+        This rectification report replaces incorrect payment data for the period 2026-01-01 to 2026-01-31.
+        
+        Type = RECTIFICATION indicates this replaces a previous report for the same period.
+        The IssuerAssignedReportId links it back to the original report identifier.
+    -->
+
+    <cbc:CustomizationID>urn:pagero.com:puf:taxreport:1.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:pagero.com:puf:taxreport:1.0</cbc:ProfileID>
+    <!-- TT-1: Tax report identifier -->
+    <cbc:ID>PAY-2026-001-RECT</cbc:ID>
+    <!-- TT-3: Issue date of this rectification report -->
+    <cbc:IssueDate>2026-02-10</cbc:IssueDate>
+    <!-- Classification: INCOME for sales payment reporting -->
+    <ClassificationIdentifier>INCOME</ClassificationIdentifier>
+    <!-- Type: RECTIFICATION to correct a previously submitted report -->
+    <Type>RECTIFICATION</Type>
+    <!-- TT-89/TT-90: Report period being rectified -->
+    <ReportPeriod>
+        <cbc:StartDate>2026-01-01</cbc:StartDate>
+        <cbc:EndDate>2026-01-31</cbc:EndDate>
+    </ReportPeriod>
+    <!-- TT-13: Issuer (declaring) party -->
+    <cac:IssuerParty>
+        <cac:PartyLegalEntity>
+            <cbc:RegistrationName>Dupont et Fils SAS</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="0002">412280737</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+    </cac:IssuerParty>
+
+    <!-- ============================================================ -->
+    <!-- Corrected payment: The original report had incorrect VAT breakdown.
+         Actual payment was 1440.00 EUR at 20% (not 1200.00 EUR as previously reported). -->
+    <!-- ============================================================ -->
+    <Payment>
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>
+            <PaymentDataType>INVOICE</PaymentDataType>
+            <!-- TT-91: Same invoice reference as the original report -->
+            <cbc:ID>FAC-2025-00842</cbc:ID>
+            <cbc:IssueDate>2025-12-15</cbc:IssueDate>
+        </ReferencedDocument>
+        <!-- TT-92: Payment received date -->
+        <cbc:PaidDate>2026-01-10</cbc:PaidDate>
+        <PaymentTotal>
+            <!-- TT-93/TT-95: Corrected amount at 20% -->
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">1440.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>20</cbc:Percent>
+            </PaymentSubtotal>
+            <!-- TT-93/TT-95: Amount at 5.5% remains unchanged -->
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">316.50</cbc:TaxInclusiveAmount>
+                <cbc:Percent>5.5</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+</TaxReport>

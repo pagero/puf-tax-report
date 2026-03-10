@@ -10,9 +10,9 @@ _Format "HH:mm:ss", "HH:mm:ssZZZZ", "HH:mm:ss.SSS'Z'", or "HH:mm:ss.SSS"._
 _cbc:IssueTime with example value_
 [source,xml]
 ----
-<Invoice>
+<TaxReport>
   <!-- Code omitted for clarity -->
   <cbc:IssueTime>21:32:52</cbc:IssueTime>
   <!-- Code omitted for clarity -->
-</Invoice>
+</TaxReport>
 ----

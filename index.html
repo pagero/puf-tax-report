@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
-<meta name="author" content="Copyright &copy; 2022, Pagero Group">
-<meta name="copyright" content="Pagero Group">
+<meta name="author" content="Copyright &copy; 2026, Pagero, Part of Thomson Reuters">
+<meta name="copyright" content="Pagero, Part of Thomson Reuters">
 <title>PUF Tax Report 1.0 (BETA)</title>
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -521,7 +521,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div id="header">
 <h1><span class="image center"><img src="images/puf-logo.png" alt="puf logo" width="100%"></span> PUF Tax Report 1.0 (BETA)</h1>
 <div class="details">
-<span id="author" class="author">Copyright &copy; 2022, Pagero Group</span><br>
+<span id="author" class="author">Copyright &copy; 2026, Pagero, Part of Thomson Reuters</span><br>
 <span id="email" class="email"><a href="https://pagero.com" class="bare">https://pagero.com</a></span><br>
 </div>
 <div id="toc" class="toc2">
@@ -656,7 +656,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <p>In some cases, however, required reporting data is not provided to a business recipient and is instead submitted only to the tax authority.</p>
 </div>
 <div class="paragraph">
-<p>To simplify reporting and standardize the required content, the PUF Tax Report specification has been developed. Currently this specification support reporting of Payments received.</p>
+<p>To simplify reporting and standardize the required content, the PUF Tax Report specification has been developed. Currently this specification supports reporting of payments received and payments made.</p>
 </div>
 <div class="sect2">
 <h3 id="_how_to_get_started_with_puf"><a class="anchor" href="#_how_to_get_started_with_puf"></a><a class="link" href="#_how_to_get_started_with_puf">2.1. How to get started with PUF</a></h3>
@@ -979,11 +979,11 @@ A unique identifier of the tax report.</p></td>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;Invoice&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;TaxReport&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
   <span class="tag">&lt;cbc:IssueTime&gt;</span>21:32:52<span class="tag">&lt;/cbc:IssueTime&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
-<span class="tag">&lt;/Invoice&gt;</span></code></pre>
+<span class="tag">&lt;/TaxReport&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -1003,8 +1003,10 @@ A unique identifier of the tax report.</p></td>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ClassificationIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Classification Identifier. Indicates if report is considered an Income or expense report</strong><br>
-<em>Valid values are INCOME or EXPENSE.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Classification Identifier. Indicates if report is considered an Income or expense report.</strong><br>
+<em>Valid values are INCOME or EXPENSE.</em><br>
+Use <code>INCOME</code> for sales/revenue reporting (payments received from customers).<br>
+Use <code>EXPENSE</code> for purchase reporting (payments made to suppliers).</p></td>
 </tr>
 </tbody>
 </table>
@@ -1016,7 +1018,7 @@ A unique identifier of the tax report.</p></td>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;TaxReport&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
-  <span class="tag">&lt;ClassificationIdentifier&gt;</span>INCOME<span class="tag">&lt;/cbc:ClassificationIdentifier&gt;</span>
+  <span class="tag">&lt;ClassificationIdentifier&gt;</span>INCOME<span class="tag">&lt;/ClassificationIdentifier&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
 <span class="tag">&lt;/TaxReport&gt;</span></code></pre>
 </div>
@@ -1039,7 +1041,11 @@ A unique identifier of the tax report.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Type</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Type of transmission.</strong><br>
-<em>Valid values are: NEW, ADDITIONAL, CORRECTIVE, RECTIFICATION.</em></p></td>
+<em>Valid values are:</em><br>
+<code>NEW</code> - Initial submission for the reporting period.<br>
+<code>ADDITIONAL</code> - Supplementary data added to a previously submitted report.<br>
+<code>CORRECTIVE</code> - Correction of individual entries in a previously submitted report.<br>
+<code>RECTIFICATION</code> - Full replacement of a previously submitted report for the same period.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1051,7 +1057,7 @@ A unique identifier of the tax report.</p></td>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;TaxReport&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
-  <span class="tag">&lt;Type&gt;</span>RECTIFICATION<span class="tag">&lt;/cbc:ClassificationIdentifier&gt;</span>
+  <span class="tag">&lt;Type&gt;</span>RECTIFICATION<span class="tag">&lt;/Type&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
 <span class="tag">&lt;/TaxReport&gt;</span></code></pre>
 </div>
@@ -1197,7 +1203,7 @@ Issuers legal entity country code.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cbc:DocumentCurrencyCode</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Document currency code</strong><br>
-The currency in which payment amounts are given..<br>
+The currency in which payment amounts are given.<br>
 <em>Value must be according to ISO 4217 Currency codes.</em><br>
 For valid values see code list <a href="https://pagero.github.io/puf-code-lists/#_puf_004_currencycode" target="_blank" rel="noopener">PUF-004-CURRENCYCODE</a>.</p></td>
 </tr>
@@ -1238,8 +1244,10 @@ For valid values see code list <a href="https://pagero.github.io/puf-code-lists/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PaymentDataType</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Indicates if the payment relates to an invoice or a receipttransaction.</strong><br>
-<em>Valid values are INVOICE or RECEIPTTRANSACTION".</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Indicates if the payment relates to an invoice or a receipt transaction.</strong><br>
+<em>Valid values are INVOICE or RECEIPTTRANSACTION.</em><br>
+Use <code>INVOICE</code> for reporting payments on B2B invoices.<br>
+Use <code>RECEIPTTRANSACTION</code> for reporting payments on B2C invoices or POS transactions.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cbc:ID</code></p></td>
@@ -1296,7 +1304,7 @@ Legal registration identifier of the buyer of the referenced document.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Legal company scheme identifier</strong><br>
-Scheme ID for the legal registration identifier of thebuyer of the referenced document+
+Scheme ID for the legal registration identifier of the buyer of the referenced document+
 Value must be according to code list <a href="https://pagero.github.io/puf-code-lists/#_puf_008_identificationscheme" target="_blank" rel="noopener">PUF-008-IDENTIFICATIONSCHEME</a>.</p></td>
 </tr>
 </tbody>
@@ -1354,7 +1362,7 @@ Value must be according to code list <a href="https://pagero.github.io/puf-code-
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cbc:PaidDate</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Paid date</strong><br>
-The date when the payment was received.<br>
+The date when the payment was made or received.<br>
 <em>Format "YYYY-MM-DD".</em></p></td>
 </tr>
 </tbody>
@@ -1394,13 +1402,14 @@ The date when the payment was received.<br>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cbc:PaymentMeansCode</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Payment means code</strong><br>
-The means, expressed as code, for how a payment has been settled<br></p></td>
+The means, expressed as code, for how a payment has been settled.<br>
+For valid values see code list <a href="https://pagero.github.io/puf-code-lists/#_puf_010_paymentmeanscode" target="_blank" rel="noopener">PUF-010-PAYMENTMEANSCODE</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
 <p><strong>Example</strong><br>
-<em>cbc:PaidDate with example value</em></p>
+<em>cbc:PaymentMeansCode with example value</em></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1412,7 +1421,7 @@ The means, expressed as code, for how a payment has been settled<br></p></td>
     <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
   <span class="tag">&lt;/Payment&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
-<span class="tag">&lt;TaxReport&gt;</span></code></pre>
+<span class="tag">&lt;/TaxReport&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -1464,15 +1473,15 @@ The means, expressed as code, for how a payment has been settled<br></p></td>
   <span class="tag">&lt;Payment&gt;</span>
     <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
     <span class="tag">&lt;PaymentTotal&gt;</span>
-        <span class="tag">&lt;cbc:TaxExclusiveAmount</span> <span class="attribute-name">currencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EUR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>200.00<span class="tag">&lt;/cbc:TaxInclusiveAmount&gt;</span>
+        <span class="tag">&lt;cbc:TaxExclusiveAmount</span> <span class="attribute-name">currencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EUR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>200.00<span class="tag">&lt;/cbc:TaxExclusiveAmount&gt;</span>
         <span class="tag">&lt;cbc:TaxInclusiveAmount</span> <span class="attribute-name">currencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EUR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>220.00<span class="tag">&lt;/cbc:TaxInclusiveAmount&gt;</span>
         <span class="tag">&lt;PaymentSubtotal&gt;</span>
-            <span class="tag">&lt;cbc:TaxExclusiveAmount</span> <span class="attribute-name">currencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EUR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>100.00<span class="tag">&lt;/cbc:TaxInclusiveAmount&gt;</span>
+            <span class="tag">&lt;cbc:TaxExclusiveAmount</span> <span class="attribute-name">currencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EUR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>100.00<span class="tag">&lt;/cbc:TaxExclusiveAmount&gt;</span>
             <span class="tag">&lt;cbc:TaxInclusiveAmount</span> <span class="attribute-name">currencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EUR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>120.00<span class="tag">&lt;/cbc:TaxInclusiveAmount&gt;</span>
             <span class="tag">&lt;cbc:Percent&gt;</span>20<span class="tag">&lt;/cbc:Percent&gt;</span>
         <span class="tag">&lt;/PaymentSubtotal&gt;</span>
         <span class="tag">&lt;PaymentSubtotal&gt;</span>
-            <span class="tag">&lt;cbc:TaxExclusiveAmount</span> <span class="attribute-name">currencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EUR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>100.00<span class="tag">&lt;/cbc:TaxInclusiveAmount&gt;</span>
+            <span class="tag">&lt;cbc:TaxExclusiveAmount</span> <span class="attribute-name">currencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EUR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>100.00<span class="tag">&lt;/cbc:TaxExclusiveAmount&gt;</span>
             <span class="tag">&lt;cbc:TaxInclusiveAmount</span> <span class="attribute-name">currencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EUR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>100.00<span class="tag">&lt;/cbc:TaxInclusiveAmount&gt;</span>
             <span class="tag">&lt;cbc:Percent&gt;</span>0<span class="tag">&lt;/cbc:Percent&gt;</span>
         <span class="tag">&lt;/PaymentSubtotal&gt;</span>
@@ -1480,7 +1489,7 @@ The means, expressed as code, for how a payment has been settled<br></p></td>
     <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
   <span class="tag">&lt;/Payment&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
-<span class="tag">&lt;/Invoice&gt;</span></code></pre>
+<span class="tag">&lt;/TaxReport&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -1571,6 +1580,11 @@ The means, expressed as code, for how a payment has been settled<br></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identification scheme</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cac:PartyLegalEntity/cbc:CompanyID/@schemeID</code><br></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://pagero.github.io/puf-code-lists/#_puf_008_identificationscheme" target="_blank" rel="noopener">PUF-008-IDENTIFICATIONSCHEME</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Payment means code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cbc:PaymentMeansCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://pagero.github.io/puf-code-lists/#_puf_010_paymentmeanscode" target="_blank" rel="noopener">PUF-010-PAYMENTMEANSCODE</a></p></td>
 </tr>
 </tbody>
 </table>

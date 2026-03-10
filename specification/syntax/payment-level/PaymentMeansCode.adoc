@@ -3,11 +3,12 @@
 
 |`cbc:PaymentMeansCode`
 |**Payment means code** +
-The means, expressed as code, for how a payment has been settled + 
+The means, expressed as code, for how a payment has been settled. +
+For valid values see code list https://pagero.github.io/puf-code-lists/#_puf_010_paymentmeanscode[PUF-010-PAYMENTMEANSCODE^].
 |===
 
 *Example* +
-_cbc:PaidDate with example value_ 
+_cbc:PaymentMeansCode with example value_
 [source,xml]
 ----
 <TaxReport>
@@ -18,5 +19,5 @@ _cbc:PaidDate with example value_
     <!-- Code omitted for clarity -->
   </Payment>
   <!-- Code omitted for clarity -->
-<TaxReport>
+</TaxReport>
 ----

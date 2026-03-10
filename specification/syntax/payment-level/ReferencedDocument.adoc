@@ -3,8 +3,10 @@
 |Path |Description
 
 |`PaymentDataType`
-|**Indicates if the payment relates to an invoice or a receipttransaction.** +
-_Valid values are INVOICE or RECEIPTTRANSACTION"._
+|**Indicates if the payment relates to an invoice or a receipt transaction.** +
+_Valid values are INVOICE or RECEIPTTRANSACTION._ +
+Use `INVOICE` for reporting payments on B2B invoices. +
+Use `RECEIPTTRANSACTION` for reporting payments on B2C invoices or POS transactions.
 
 |`cbc:ID`
 |**ID of the referenced document** +
@@ -49,7 +51,7 @@ Legal registration identifier of the buyer of the referenced document.
 
 |`cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID/@schemeID`
 |**Legal company scheme identifier** +
-Scheme ID for the legal registration identifier of thebuyer of the referenced document+
+Scheme ID for the legal registration identifier of the buyer of the referenced document+
 Value must be according to code list https://pagero.github.io/puf-code-lists/#_puf_008_identificationscheme[PUF-008-IDENTIFICATIONSCHEME^].
 
 |===

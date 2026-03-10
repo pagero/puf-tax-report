@@ -3,7 +3,7 @@
 
 |`cbc:PaidDate`
 |**Paid date** +
-The date when the payment was received. +
+The date when the payment was made or received. +
 _Format "YYYY-MM-DD"._
 |===
 
