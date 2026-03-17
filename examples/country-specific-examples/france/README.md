@@ -10,6 +10,7 @@ Example files for French payment reporting (Flux 10, sub-streams 10.2 and 10.4).
 | `PUF_FR_payment_income_invoices_and_transactions.xml` | INCOME | — | Same as above with FR naming convention. |
 | `PUF_FR_payment_rectification.xml` | INCOME | RECTIFICATION | Rectification of a previously reported payment period. Demonstrates `Type` = RECTIFICATION with `ReportPeriod`. |
 | `PUF_FR_payment_expense_purchases.xml` | EXPENSE | NEW | Purchase payment reporting. Covers payments made on intra-community (0% reverse charge) and domestic (20%) purchase invoices. |
+| `PUF_FR_UC43_international_b2b_payment.xml` | INCOME | — | UC43: Payment reporting for international B2B services (Flux 10.2). Demonstrates payment received on invoices for services performed in France for EU clients. Includes full and partial payment examples. |
 
 ## Key Concepts
 
