@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TaxReport xmlns="urn:pagero:PageroUniversalFormat:TaxReport:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+
+    <!--
+        EXAMPLE: UC43 - Payment reporting for international B2B services (Flux 10, sub-stream 10.2)
+
+        Business Scenario:
+        - French consulting firm received payment on an international B2B services invoice
+        - Payment e-reporting (Flux 10.2) is required ONLY for:
+          * Services where VAT on debits has NOT been activated (cash basis)
+          * Prepayment invoices
+        - Payment e-reporting is NOT required when VAT is due by the buyer (reverse charge)
+        - This example shows a services invoice to a Belgian client where VAT is
+          on cash basis (not reverse charge — French VAT applies because service
+          is performed in France)
+
+        Key UC43 Payment Reporting Concepts:
+        - PaymentDataType = INVOICE for B2B invoice payment reporting (sub-stream 10.2)
+        - Classification = INCOME (sales payment reporting)
+        - Currency must be EUR
+        - Each Payment element references the specific invoice paid
+        - VAT breakdown by rate required in PaymentSubtotal
+
+        Source: XP Z12-014 Annexe A v1.3, Section 3.2.42
+    -->
+
+    <!-- Specification Identifier -->
+    <cbc:CustomizationID>urn:pagero.com:puf:taxreport:1.0</cbc:CustomizationID>
+    <!-- Business process type identifier -->
+    <cbc:ProfileID>urn:pagero.com:puf:taxreport:1.0</cbc:ProfileID>
+    <!-- TT-1: Tax report identifier (issuer assigned) -->
+    <cbc:ID>PAY-2026-UC43-001</cbc:ID>
+    <!-- TT-3: Tax report issue date -->
+    <cbc:IssueDate>2026-04-05</cbc:IssueDate>
+    <!-- Classification Identifier: INCOME for sales payment reporting -->
+    <ClassificationIdentifier>INCOME</ClassificationIdentifier>
+    <!-- TT-89/TT-90: Report period -->
+    <ReportPeriod>
+        <cbc:StartDate>2026-03-01</cbc:StartDate>
+        <cbc:EndDate>2026-03-31</cbc:EndDate>
+    </ReportPeriod>
+    <!-- TT-13: Issuer (declaring) party — French seller -->
+    <cac:IssuerParty>
+        <cac:PartyLegalEntity>
+            <cbc:RegistrationName>ConseilTech International SAS</cbc:RegistrationName>
+            <!-- TT-13: SIREN identifier (schemeID 0002) -->
+            <cbc:CompanyID schemeID="0002">444555666</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+    </cac:IssuerParty>
+
+    <!-- ============================================================ -->
+    <!-- PAYMENT 1: Payment received on international B2B services invoice
+         French consulting services performed in France for a Belgian client.
+         VAT on cash basis — payment triggers VAT chargeability.
+         This is Flux 10.2 (sub-stream for B2B invoice payments). -->
+    <!-- ============================================================ -->
+    <Payment>
+        <!-- TT-94: Document currency (must be EUR for France) -->
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>
+            <!-- PaymentDataType: INVOICE for B2B invoice payment (sub-stream 10.2) -->
+            <PaymentDataType>INVOICE</PaymentDataType>
+            <!-- TT-91: Invoice number -->
+            <cbc:ID>FR-INV-2026-INTL-001</cbc:ID>
+            <!-- TT-102: Invoice issue date -->
+            <cbc:IssueDate>2026-03-01</cbc:IssueDate>
+        </ReferencedDocument>
+        <!-- TT-92: Date when payment was received -->
+        <cbc:PaidDate>2026-03-25</cbc:PaidDate>
+        <!-- Payment totals broken down by tax rate -->
+        <PaymentTotal>
+            <!-- TT-93/TT-95: Amount received at 20% standard VAT rate -->
+            <!-- Full invoice amount: 15,000 HT + 3,000 VAT = 18,000 TTC -->
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">18000.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>20</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+
+    <!-- ============================================================ -->
+    <!-- PAYMENT 2: Partial payment received on another international services invoice
+         IT audit services for a Spanish client, performed in France.
+         Partial payment of 50% received. -->
+    <!-- ============================================================ -->
+    <Payment>
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>
+            <PaymentDataType>INVOICE</PaymentDataType>
+            <!-- TT-91: Invoice number -->
+            <cbc:ID>FR-INV-2026-INTL-002</cbc:ID>
+            <!-- TT-102: Invoice issue date -->
+            <cbc:IssueDate>2026-02-15</cbc:IssueDate>
+        </ReferencedDocument>
+        <!-- TT-92: Payment date -->
+        <cbc:PaidDate>2026-03-15</cbc:PaidDate>
+        <PaymentTotal>
+            <!-- TT-93/TT-95: Partial payment at 20% VAT -->
+            <!-- Original invoice: 8,000 HT + 1,600 VAT = 9,600 TTC; 50% paid = 4,800 -->
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">4800.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>20</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+
+</TaxReport>
