@@ -16,7 +16,7 @@ Example files for French payment reporting (Flux 10, sub-streams 10.2 and 10.4).
 
 - **ClassificationIdentifier**: `INCOME` for sales/revenue reporting, `EXPENSE` for purchase reporting.
 - **PaymentDataType**: `INVOICE` for B2B invoice payments (sub-stream 10.2), `RECEIPTTRANSACTION` for B2C/POS payments (sub-stream 10.4).
-- **Type**: `NEW`, `ADDITIONAL`, `CORRECTIVE`, or `RECTIFICATION` — indicates the nature of the submission.
+- **Type**: `ADD`, `EDIT`, or `REPLACE_PERIOD` — indicates the nature of the submission. `ADD` adds supplementary data, `EDIT` corrects individual entries, `REPLACE_PERIOD` fully replaces a previously submitted report for the period. (During a transition period `RECTIFICATION` may still be used and should later be changed to `REPLACE_PERIOD`; the transform also accepts the legacy aliases `ADDITIONAL`/`CO` and `CORRECTIVE`/`MO`.)
 - **ReportPeriod**: The reporting period (`StartDate` / `EndDate`) the payment data covers.
 - **Currency**: Must be `EUR` for French payment reporting.
 - **IssuerParty**: The declaring party, identified by SIREN (`schemeID="0002"`).
