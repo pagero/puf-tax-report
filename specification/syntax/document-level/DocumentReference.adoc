@@ -1,0 +1,24 @@
+Below table show available fields in `cac:DocumentReference`
+
+.Additional elements added within cac:DocumentReference
+|===
+|Path |Description
+
+|`cbc:ID`
+|**Referenced document identifier** +
+Identifier of a related document, e.g. a previously reported tax report.
+
+|===
+
+*Example* +
+_cac:DocumentReference example_
+[source,xml]
+----
+<TaxReport>
+  <!-- Code omitted for clarity -->
+  <cac:DocumentReference>
+    <cbc:ID>51234882</cbc:ID>
+  </cac:DocumentReference>
+  <!-- Code omitted for clarity -->
+</TaxReport>
+----

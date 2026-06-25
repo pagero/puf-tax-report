@@ -228,6 +228,13 @@
                 </xs:annotation>
             </xs:element>
 
+            <xs:element name="IssuerAssignedID" type="udt:IdentifierType" minOccurs="0"
+                maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>An identifier assigned by the issuer of the Tax Report</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
             <xs:element ref="cbc:IssueDate" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Tax Report issue date. Must not include a timezone.</xs:documentation>
@@ -249,7 +256,7 @@
 
             <xs:element name="Type" type="TransmissionType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation>Type of transmission. Valid values are: NEW, ADDITIONAL, CORRECTIVE, RECTIFICATION</xs:documentation>
+                    <xs:documentation>Type of transmission. Valid values are: ADD, EDIT, REPLACE_PERIOD</xs:documentation>
                 </xs:annotation>
             </xs:element>
 
@@ -262,6 +269,12 @@
             <xs:element ref="cac:IssuerParty" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Issuer of the Tax report</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element ref="cac:DocumentReference" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Reference to a related document, e.g. a previously reported Tax Report</xs:documentation>
                 </xs:annotation>
             </xs:element>
 

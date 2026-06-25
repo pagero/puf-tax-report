@@ -19,6 +19,10 @@ include::document-level/ProfileID.adoc[]
 
 include::document-level/id.adoc[]
 
+==== IssuerAssignedID
+
+include::document-level/IssuerAssignedID.adoc[]
+
 ==== cbc:IssueDate
 
 include::document-level/IssueDate.adoc[]
@@ -42,4 +46,8 @@ include::document-level/ReportPeriod.adoc[]
 ==== 	cac:IssuerParty
 
 include::document-level/IssuerParty.adoc[]
+
+==== cac:DocumentReference
+
+include::document-level/DocumentReference.adoc[]
 

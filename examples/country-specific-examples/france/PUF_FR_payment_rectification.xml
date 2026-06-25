@@ -21,8 +21,10 @@
     <cbc:IssueDate>2026-02-10</cbc:IssueDate>
     <!-- Classification: INCOME for sales payment reporting -->
     <ClassificationIdentifier>INCOME</ClassificationIdentifier>
-    <!-- Type: RECTIFICATION to correct a previously submitted report -->
-    <Type>RECTIFICATION</Type>
+    <!-- Type of transmission: full replacement of the previously submitted report for the same period.
+         NOTE: during an initial transition period the value RECTIFICATION may be used instead;
+         this should later be changed to REPLACE_PERIOD. -->
+    <Type>REPLACE_PERIOD</Type>
     <!-- TT-89/TT-90: Report period being rectified -->
     <ReportPeriod>
         <cbc:StartDate>2026-01-01</cbc:StartDate>
@@ -35,6 +37,10 @@
             <cbc:CompanyID schemeID="0002">412280737</cbc:CompanyID>
         </cac:PartyLegalEntity>
     </cac:IssuerParty>
+    <!-- Reference to the aggregated id of the previously sent report that this report replaces -->
+    <cac:DocumentReference>
+        <cbc:ID>51234882</cbc:ID>
+    </cac:DocumentReference>
 
     <!-- ============================================================ -->
     <!-- Corrected payment: The original report had incorrect VAT breakdown.

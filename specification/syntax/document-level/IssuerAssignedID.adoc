@@ -1,0 +1,19 @@
+|===
+|Path |Description
+
+|`IssuerAssignedID`
+|**Issuer assigned identifier** +
+An identifier assigned by the issuer of the tax report.
+|===
+
+*Example* +
+_IssuerAssignedID with example value_
+[source,xml]
+----
+<TaxReport>
+
+  <!-- Code omitted for clarity -->
+  <IssuerAssignedID>ISS-2026-0001</IssuerAssignedID>
+  <!-- Code omitted for clarity -->
+</TaxReport>
+----
