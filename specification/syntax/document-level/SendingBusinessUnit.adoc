@@ -1,0 +1,19 @@
+|===
+|Path |Description
+
+|`SendingBusinessUnit`
+|**Sending business unit** +
+The source system or department that sent the tax report.
+|===
+
+*Example* +
+_SendingBusinessUnit with example value_
+[source,xml]
+----
+<TaxReport>
+
+  <!-- Code omitted for clarity -->
+  <SendingBusinessUnit>Finance-FR</SendingBusinessUnit>
+  <!-- Code omitted for clarity -->
+</TaxReport>
+----

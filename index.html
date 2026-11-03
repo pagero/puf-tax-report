@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="author" content="Copyright &copy; 2026, Pagero, Part of Thomson Reuters">
 <meta name="copyright" content="Pagero, Part of Thomson Reuters">
 <title>PUF Tax Report 1.0 (BETA)</title>
@@ -557,6 +557,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_cbcprofileid">cbc:ProfileID</a></li>
 <li><a href="#_cbcid">cbc:ID</a></li>
 <li><a href="#_issuerassignedid">IssuerAssignedID</a></li>
+<li><a href="#_sendingbusinessunit">SendingBusinessUnit</a></li>
 <li><a href="#_cbcissuedate">cbc:IssueDate</a></li>
 <li><a href="#_cbcissuetime">cbc:IssueTime</a></li>
 <li><a href="#_classificationidentifier">ClassificationIdentifier</a></li>
@@ -950,6 +951,42 @@ An identifier assigned by the issuer of the tax report.</p></td>
 
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
   <span class="tag">&lt;IssuerAssignedID&gt;</span>ISS-2026-0001<span class="tag">&lt;/IssuerAssignedID&gt;</span>
+  <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
+<span class="tag">&lt;/TaxReport&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sendingbusinessunit"><a class="anchor" href="#_sendingbusinessunit"></a><a class="link" href="#_sendingbusinessunit">SendingBusinessUnit</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SendingBusinessUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sending business unit</strong><br>
+The source system or department that sent the tax report.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Example</strong><br>
+<em>SendingBusinessUnit with example value</em></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;TaxReport&gt;</span>
+
+  <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
+  <span class="tag">&lt;SendingBusinessUnit&gt;</span>Finance-FR<span class="tag">&lt;/SendingBusinessUnit&gt;</span>
   <span class="comment">&lt;!-- Code omitted for clarity --&gt;</span>
 <span class="tag">&lt;/TaxReport&gt;</span></code></pre>
 </div>
