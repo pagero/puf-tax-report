@@ -23,6 +23,10 @@ include::document-level/id.adoc[]
 
 include::document-level/IssuerAssignedID.adoc[]
 
+==== SendingBusinessUnit
+
+include::document-level/SendingBusinessUnit.adoc[]
+
 ==== cbc:IssueDate
 
 include::document-level/IssueDate.adoc[]

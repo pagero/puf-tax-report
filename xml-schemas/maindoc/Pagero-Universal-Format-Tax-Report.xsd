@@ -235,6 +235,13 @@
                 </xs:annotation>
             </xs:element>
 
+            <xs:element name="SendingBusinessUnit" type="udt:TextType" minOccurs="0"
+                maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The source system or department that sent the Tax Report</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
             <xs:element ref="cbc:IssueDate" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Tax Report issue date. Must not include a timezone.</xs:documentation>
