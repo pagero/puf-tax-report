@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TaxReport xmlns="urn:pagero:PageroUniversalFormat:TaxReport:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+
+    <!--
+        EXAMPLE: Payments for B2C / POS receipt transactions, referenced by date only (France, Flux 10 sub-stream 10.4)
+
+        Use case: A retailer reports the payments collected from consumers at the point of sale.
+        There is no invoice to refer to. Each Payment instead refers back to the DAY the payments were
+        received (PaidDate) and is split per VAT rate.
+
+        - PaymentDataType = RECEIPTTRANSACTION (sub-stream 10.4); no ReferencedDocument/cbc:ID or IssueDate.
+        - One Payment per payment date. Several days can be reported in the same report.
+        - The payment report carries no transaction category code (TLB1/TPS1/...). That category belongs to
+          the transaction report of the sales (Flux 10.3), where the same sales are reported as RECEIPTTRANSACTION.
+    -->
+
+    <cbc:CustomizationID>urn:pagero.com:puf:taxreport:1.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:pagero.com:puf:taxreport:1.0</cbc:ProfileID>
+    <!-- Tax report id (no TT code) -->
+    <cbc:ID>PAY-2026-POS-001</cbc:ID>
+    <!-- TT-3: Issue date -->
+    <cbc:IssueDate>2026-02-03</cbc:IssueDate>
+    <ClassificationIdentifier>INCOME</ClassificationIdentifier>
+    <!-- TT-89/TT-90: Report period. Mandatory when the report spans several payment dates. -->
+    <ReportPeriod>
+        <cbc:StartDate>2026-01-01</cbc:StartDate>
+        <cbc:EndDate>2026-01-31</cbc:EndDate>
+    </ReportPeriod>
+    <!-- TT-13: Issuer (declaring) party -->
+    <cac:IssuerParty>
+        <cac:PartyLegalEntity>
+            <cbc:RegistrationName>Boulangerie Martin SARL</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="0002">552100554</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+    </cac:IssuerParty>
+
+    <!-- Payments collected on 2026-01-08 -->
+    <Payment>
+        <!-- TT-98: Currency, must be EUR -->
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>
+            <!-- RECEIPTTRANSACTION: no invoice id/date, the payment is identified by its date only -->
+            <PaymentDataType>RECEIPTTRANSACTION</PaymentDataType>
+        </ReferencedDocument>
+        <!-- TT-96: Date the payments were received -->
+        <cbc:PaidDate>2026-01-08</cbc:PaidDate>
+        <PaymentTotal>
+            <!-- TT-97/TT-99: Amount collected at 5.5% -->
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">316.50</cbc:TaxInclusiveAmount>
+                <cbc:Percent>5.5</cbc:Percent>
+            </PaymentSubtotal>
+            <!-- TT-97/TT-99: Amount collected at 10% -->
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">110.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>10</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+
+    <!-- Payments collected on 2026-01-09 -->
+    <Payment>
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>
+            <PaymentDataType>RECEIPTTRANSACTION</PaymentDataType>
+        </ReferencedDocument>
+        <cbc:PaidDate>2026-01-09</cbc:PaidDate>
+        <PaymentTotal>
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">422.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>5.5</cbc:Percent>
+            </PaymentSubtotal>
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">240.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>20</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+</TaxReport>
