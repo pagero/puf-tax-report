@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TaxReport xmlns="urn:pagero:PageroUniversalFormat:TaxReport:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+
+    <!--
+        EXAMPLE: ADD - supplementary payment data for an already reported period (France, Flux 10 sub-stream 10.2)
+
+        Use case: Report PAY-2026-001 (see PUF_FR_payment_income_invoices_and_transactions.xml) covered
+        January 2026. After it was sent, an additional B2B invoice payment received on 2026-01-22 was found
+        to be missing. This report ADDs only the missing payment; the data already reported is NOT repeated.
+
+        Type = ADD: supplementary data added to a previously submitted report for the same period.
+        cac:DocumentReference/cbc:ID points to the id of the Approved aggregated report (51234882).
+    -->
+
+    <cbc:CustomizationID>urn:pagero.com:puf:taxreport:1.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:pagero.com:puf:taxreport:1.0</cbc:ProfileID>
+    <!-- Tax report id (no TT code): identifies this specific report; an EDIT can later reference it. Unique, not the id of the original report.
+         Not to be confused with IssuerAssignedID (TT-1, free-text label) or the Pagero-generated aggregated report id. -->
+    <cbc:ID>PAY-2026-001-ADD</cbc:ID>
+    <!-- TT-3: Issue date of this supplementary report -->
+    <cbc:IssueDate>2026-02-12</cbc:IssueDate>
+    <ClassificationIdentifier>INCOME</ClassificationIdentifier>
+    <!-- Supplementary data to a previously submitted report -->
+    <Type>ADD</Type>
+    <!-- TT-89/TT-90: Same report period as the report being supplemented -->
+    <ReportPeriod>
+        <cbc:StartDate>2026-01-01</cbc:StartDate>
+        <cbc:EndDate>2026-01-31</cbc:EndDate>
+    </ReportPeriod>
+    <!-- TT-13: Issuer (declaring) party - same as the original report -->
+    <cac:IssuerParty>
+        <cac:PartyLegalEntity>
+            <cbc:RegistrationName>Dupont et Fils SAS</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="0002">412280737</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+    </cac:IssuerParty>
+    <!-- Id of the Approved aggregated report that the supplementary data is added to (French ADD scenario).
+         NOT the id of a specific previously sent report (that is the EDIT scenario). -->
+    <cac:DocumentReference>
+        <cbc:ID>51234882</cbc:ID>
+    </cac:DocumentReference>
+
+    <!-- Missing payment: B2B invoice FAC-2025-00977 was not part of the original report -->
+    <Payment>
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>
+            <PaymentDataType>INVOICE</PaymentDataType>
+            <!-- TT-91: Invoice not reported before -->
+            <cbc:ID>FAC-2025-00977</cbc:ID>
+            <cbc:IssueDate>2025-12-28</cbc:IssueDate>
+        </ReferencedDocument>
+        <!-- TT-92: Payment received date -->
+        <cbc:PaidDate>2026-01-22</cbc:PaidDate>
+        <PaymentTotal>
+            <!-- TT-93/TT-95: Amount received at 20% -->
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">2400.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>20</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+</TaxReport>

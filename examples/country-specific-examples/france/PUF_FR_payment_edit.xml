@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TaxReport xmlns="urn:pagero:PageroUniversalFormat:TaxReport:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+
+    <!--
+        EXAMPLE: EDIT - correction of an individual entry in a previously reported period (France, Flux 10 sub-stream 10.2)
+
+        Use case: Report PAY-2026-001 (see PUF_FR_payment_income_invoices_and_transactions.xml) reported a
+        payment of 5000.00 EUR (0%) for invoice FAC-2025-00901 received on 2026-01-15. The amount actually
+        received was 4750.00 EUR (customer deducted a credit note). Only this one entry is corrected;
+        all other entries of the original report stay untouched and are NOT repeated.
+
+        Type = EDIT: correction of individual entries in a previously submitted report.
+        (Use REPLACE_PERIOD instead to replace the whole report - see PUF_FR_payment_rectification.xml.)
+        cac:DocumentReference/cbc:ID points to the cbc:ID of the previously sent tax report (PAY-2026-001).
+    -->
+
+    <cbc:CustomizationID>urn:pagero.com:puf:taxreport:1.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:pagero.com:puf:taxreport:1.0</cbc:ProfileID>
+    <!-- Tax report id (no TT code): identifies this specific report; an EDIT can later reference it. Unique, not the id of the original report.
+         Not to be confused with IssuerAssignedID (TT-1, free-text label) or the Pagero-generated aggregated report id. -->
+    <cbc:ID>PAY-2026-001-EDIT</cbc:ID>
+    <!-- TT-3: Issue date of this correction report -->
+    <cbc:IssueDate>2026-02-12</cbc:IssueDate>
+    <ClassificationIdentifier>INCOME</ClassificationIdentifier>
+    <!-- Correction of individual entries of a previously submitted report -->
+    <Type>EDIT</Type>
+    <!-- TT-89/TT-90: Same report period as the report being corrected -->
+    <ReportPeriod>
+        <cbc:StartDate>2026-01-01</cbc:StartDate>
+        <cbc:EndDate>2026-01-31</cbc:EndDate>
+    </ReportPeriod>
+    <!-- TT-13: Issuer (declaring) party - same as the original report -->
+    <cac:IssuerParty>
+        <cac:PartyLegalEntity>
+            <cbc:RegistrationName>Dupont et Fils SAS</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="0002">412280737</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+    </cac:IssuerParty>
+    <!-- ID (cbc:ID) of the previously sent tax report that contains the entry being corrected -->
+    <cac:DocumentReference>
+        <cbc:ID>PAY-2026-001</cbc:ID>
+    </cac:DocumentReference>
+
+    <!-- Corrected entry: same invoice reference and paid date as in the original report, new amount -->
+    <Payment>
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>
+            <PaymentDataType>INVOICE</PaymentDataType>
+            <!-- TT-91: Same invoice reference as the entry being corrected -->
+            <cbc:ID>FAC-2025-00901</cbc:ID>
+            <cbc:IssueDate>2025-12-20</cbc:IssueDate>
+        </ReferencedDocument>
+        <!-- TT-92: Same payment date as the entry being corrected -->
+        <cbc:PaidDate>2026-01-15</cbc:PaidDate>
+        <PaymentTotal>
+            <!-- TT-93/TT-95: Corrected amount (was 5000.00) at 0% (exempt) -->
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">4750.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>0</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+</TaxReport>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TaxReport xmlns="urn:pagero:PageroUniversalFormat:TaxReport:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+
+    <!--
+        EXAMPLE: Payment report sent by a specific business unit (France, Flux 10 sub-stream 10.2)
+
+        Use case: The issuer has several source systems/departments reporting separately. The original report
+        sets SendingBusinessUnit so the report can be searched and filtered per unit in the Pagero UI.
+        SendingBusinessUnit is a free-text label and has no effect on the reporting itself.
+        The report also sets its own Tax report id (cbc:ID) so that it can later be corrected with an EDIT,
+        and an IssuerAssignedID (TT-1) as a human-readable label.
+    -->
+
+    <cbc:CustomizationID>urn:pagero.com:puf:taxreport:1.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:pagero.com:puf:taxreport:1.0</cbc:ProfileID>
+    <!-- Tax report id (no TT code): identifies this specific report; an EDIT can later reference it. -->
+    <cbc:ID>PAY-2026-002</cbc:ID>
+    <!-- TT-1: Issuer assigned report id (free-text label, not used to match reports) -->
+    <IssuerAssignedID>FR-SALES-JAN-2026</IssuerAssignedID>
+    <!-- Source system or department that sent the report. Stored with the report, searchable in the Pagero UI. -->
+    <SendingBusinessUnit>Finance-FR</SendingBusinessUnit>
+    <!-- TT-3: Issue date -->
+    <cbc:IssueDate>2026-02-05</cbc:IssueDate>
+    <ClassificationIdentifier>INCOME</ClassificationIdentifier>
+    <!-- TT-89/TT-90: Report period -->
+    <ReportPeriod>
+        <cbc:StartDate>2026-01-01</cbc:StartDate>
+        <cbc:EndDate>2026-01-31</cbc:EndDate>
+    </ReportPeriod>
+    <!-- TT-13: Issuer (declaring) party -->
+    <cac:IssuerParty>
+        <cac:PartyLegalEntity>
+            <cbc:RegistrationName>Dupont et Fils SAS</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="0002">412280737</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+    </cac:IssuerParty>
+
+    <!-- Received payment of a B2B invoice (sub-stream 10.2) -->
+    <Payment>
+        <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+        <ReferencedDocument>
+            <PaymentDataType>INVOICE</PaymentDataType>
+            <!-- TT-91 -->
+            <cbc:ID>FAC-2025-01010</cbc:ID>
+            <!-- TT-102 -->
+            <cbc:IssueDate>2025-12-30</cbc:IssueDate>
+        </ReferencedDocument>
+        <!-- TT-92 -->
+        <cbc:PaidDate>2026-01-18</cbc:PaidDate>
+        <PaymentTotal>
+            <!-- TT-93/TT-95 -->
+            <PaymentSubtotal>
+                <cbc:TaxInclusiveAmount currencyID="EUR">1800.00</cbc:TaxInclusiveAmount>
+                <cbc:Percent>20</cbc:Percent>
+            </PaymentSubtotal>
+        </PaymentTotal>
+    </Payment>
+</TaxReport>
